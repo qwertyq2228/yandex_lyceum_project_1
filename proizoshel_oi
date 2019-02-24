@@ -1,0 +1,25 @@
+import string
+
+morse_zip = zip(
+    tuple(string.ascii_letters[26:] + string.digits + '.,:;\'\"-/?! '),
+    ('.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.',
+        '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-', '-.--', '--..',
+        '-----', '.----', '..---', '...--', '....-', '.....', '-....', '--...', '---..', '----.',
+        '......', '.-.-.-', '---...', '-.-.-.', '.----.', '.-..-.', '-....-', '-..-.', '..--..', '--...--', '-..-'
+     )
+)
+
+MorseCode = dict(morse_zip)
+MorseUnCode = {d:k for k, d in MorseCode.items()}
+
+
+def decode_from_morse(code):
+    return ''.join([MorseUnCode[elem] for elem in code.split()])
+
+
+def encode_to_morse(text):
+    return ' '.join([MorseCode[elem] for elem in text.upper()])
+
+
+# print(decode_from_morse('.... . .-.. .-.. --- .-.-.- -..- -.-. --- -.-. -.- --...--'))
+# print(encode_to_morse('Hello, cock!'))
